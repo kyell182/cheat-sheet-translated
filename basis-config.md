@@ -50,7 +50,9 @@ Verifieer je nieuw geconfigureerde instellingen met ``S1#show ip ssh``
 ----
 
 Je kunt dezelfde reeks, die in het onderstaande tekstvak staat, kopiëren en plakken in je Cisco-apparaat, of het nu een fysiek Cisco-apparaat is of een gesimuleerd apparaat in een omgeving zoals Packet Tracer.  
-```
+:bulb: Merk op dat de onderstaande opdrachten zijn afgekort. Ze zouden echter prima moeten werken.  
+:bulb: Zorg ervoor dat je selecteert en kopieert tot aan de lege regel onder het laatste commando. Op die manier wordt dat laatste commando uitgevoerd zonder dat je handmatig op enter hoeft te drukken.
+ ```
 ena
 conf t
 no ip domain-lookup
@@ -64,8 +66,7 @@ copy run start
 
 << select and copy up to the line above this "marker" with your cursor
 ```
-:bulb: Merk op dat de onderstaande opdrachten zijn afgekort. Ze zouden echter prima moeten werken.  
-:bulb: Zorg ervoor dat je selecteert en kopieert tot aan de lege regel onder het laatste commando. Op die manier wordt dat laatste commando uitgevoerd zonder dat je handmatig op enter hoeft te drukken. 
+
 
 
 ## Andere tips en hints voor je initiële configuraties
