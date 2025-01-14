@@ -6,7 +6,7 @@ Commando|Aanvullende Notities
 ---|---
 ``CDevice>enable``|ga naar de bevoorrechte EXEC-modus
 ``CDevice#configure terminal``|ga naar de globale configuratiemodus
-``CDevice(config)#no ip domain-lookup``|schakel DNS-lookup uit
+``CDevice(config)#no ip domain-lookup``|schakel DNS-lookup uit :bulb: onderbreekt look-up (shift+ctrl+6)
 ``CDevice(config)#cdp run``|zorg ervoor dat CDP draait :bulb:(hoewel het standaard draait op Cisco-apparaten)
 ``CDevice(config)#banner motd $ message $``|stel banner in
 ``CDevice(config)#hostname nameofhost``|stel de hostnaam in op naamvanhost
