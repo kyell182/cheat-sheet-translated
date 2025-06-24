@@ -1,12 +1,12 @@
 Opmerking: deze opdrachten werken op zowel Cisco-routers als switches.
 
-## Basisapparaatconfiguratie 
+## Basisapparaatconfiguratie
 
 Commando|Aanvullende Notities
 ---|---
 ``CDevice>enable``|ga naar de bevoorrechte EXEC-modus
 ``CDevice#configure terminal``|ga naar de globale configuratiemodus
-``CDevice(config)#no ip domain-lookup``|schakel DNS-lookup uit :bulb: (shift+ctrl+6) onderbreekt look-up 
+``CDevice(config)#no ip domain-lookup``|schakel DNS-lookup uit :bulb: (shift+ctrl+6) onderbreekt look-up
 ``CDevice(config)#cdp run``|zorg ervoor dat CDP draait :bulb:(hoewel het standaard draait op Cisco-apparaten)
 ``CDevice(config)#banner motd $ message $``|stel banner in
 ``CDevice(config)#hostname nameofhost``|stel de hostnaam in op naamvanhost
@@ -15,7 +15,6 @@ Commando|Aanvullende Notities
 ``CDevice(config-line)#exec-timeout [minutes] [seconds]``|stel de time-out in voor inactiviteit van de EXEC-sessie
 ``CDevice(config-line)#end``|ga naar EXEC-bevoorrechte modus, waar het volgende commando zal worden uitgevoerd
 ``CDevice#copy running-config startup-config``|Slaat de lopende configuratie op in het NVRAM
-
 
 ## Beveiligingsinstellingen
 
@@ -28,6 +27,7 @@ Commando|Aanvullende Notities
 | `CDevice(config)#username user secret cisco` | Maak gebruiker 'user' aan met wachtwoord 'cisco'
 
 ## SSH configureren
+
 Commando|Beschrijving
 ---|---
 | `CDevice#show ip ssh`|Gebruik dit om te verifiëren dat de switch SSH ondersteunt
@@ -40,6 +40,7 @@ Commando|Beschrijving
 | `CDevice(config)##crypto key zeroise rsa`|:warning: gebruik om **RSA-sleutelpaar te verwijderen**
 
 ### SSH-configuratie wijzigen
+
 Commando|Beschrijving
 ---|---
 | `CDevice(config)##ip ssh time-out [time]`|Wijzig de time-outinstelling (tijd in seconden)
@@ -67,8 +68,7 @@ copy run start
 << select and copy up to the line above this "marker" with your cursor
 ```
 
-
-
 ## Andere tips en hints voor je initiële configuraties
+
 :bulb:Als er niet-Cisco-apparaten op je netwerk zijn, wil je misschien ook LLDP (Link-Layer Discovery Protocol) inschakelen, gebruik:  
 ````CDevice(config)#lldp run````
