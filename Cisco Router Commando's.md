@@ -573,4 +573,4 @@ Voorbeeld:
 
 ---
 
-*Gebaseerd op Cisco CCNA Routing & Switching Essentials materiaal*
+*Gebaseerd op Cisco CCNA Routing & Switching Essentials materiaal & vertaald van r7perezyera
