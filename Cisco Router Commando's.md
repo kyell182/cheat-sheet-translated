@@ -1,5 +1,50 @@
 # Cisco Router Command Cheat Sheet
 
+## Inhoudsopgave
+
+- [Cisco Router Command Cheat Sheet](#cisco-router-command-cheat-sheet)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Doel](#doel)
+  - [Configuration Modes](#configuration-modes)
+  - [Belangerijke "show" commando's](#belangerijke-show-commandos)
+    - [Filtering informatie via "show" commando's](#filtering-informatie-via-show-commandos)
+  - [Static Routing](#static-routing)
+  - [Dynamisch routing: OSPF (Open Shortest Path First)](#dynamisch-routing-ospf-open-shortest-path-first)
+    - [OSPF configuratie](#ospf-configuratie)
+    - [OSPF verificatie](#ospf-verificatie)
+  - [Configureren van ROAS (Router-On-A-Stick) inter-VLAN routing](#configureren-van-roas-router-on-a-stick-inter-vlan-routing)
+  - [🚷 ACL (Access Control List)](#-acl-access-control-list)
+    - [Procedure om standaard genummerd ACLs te configureren](#procedure-om-standaard-genummerd-acls-te-configureren)
+    - [Procedure om standaard Benoemde ACLs te configureren](#procedure-om-standaard-benoemde-acls-te-configureren)
+  - [DHCPv4](#dhcpv4)
+    - [Configureer een CISCO router als een DHCPv4 server](#configureer-een-cisco-router-als-een-dhcpv4-server)
+    - [IP helper adres](#ip-helper-adres)
+  - [NAT (Network Address Translation)](#nat-network-address-translation)
+    - [Inside en Outside interfaces instellen voor NAT](#inside-en-outside-interfaces-instellen-voor-nat)
+    - [Configureer dynamische NAT](#configureer-dynamische-nat)
+  - [HSRP (Hot Standby Router Protocol)](#hsrp-hot-standby-router-protocol)
+  - [Appendix](#appendix)
+    - [Veelvoorkomende administrative distance (AD) waarden](#veelvoorkomende-administrative-distance-ad-waarden)
+    - [IPv4 Address Classes](#ipv4-address-classes)
+    - [Private IPv4 Ranges](#private-ipv4-ranges)
+  - [Dynamisch Routing : RIP (Routing Information Protocol)](#dynamisch-routing--rip-routing-information-protocol)
+    - [RIPv1 configuratie](#ripv1-configuratie)
+    - [bijkomende RIPv1 Configuratie](#bijkomende-ripv1-configuratie)
+    - [RIPv2 configuratie](#ripv2-configuratie)
+  - [Dynamisch Routing IPv4 : EIGRP (Enhanced Interior Gateway Routing Protocol)](#dynamisch-routing-ipv4--eigrp-enhanced-interior-gateway-routing-protocol)
+    - [EIGRP configuratie voor IPv4](#eigrp-configuratie-voor-ipv4)
+    - [EIGRP IPv4 verificatie](#eigrp-ipv4-verificatie)
+    - [EIGRP Fine Tuning](#eigrp-fine-tuning)
+  - [Dynamisch Routing IPv6 : EIGRP (Enhanced Interior Gateway Routing Protocol)](#dynamisch-routing-ipv6--eigrp-enhanced-interior-gateway-routing-protocol)
+    - [EIGRP configuratie voor IPv6](#eigrp-configuratie-voor-ipv6)
+    - [EIGRP IPv6 verificatie](#eigrp-ipv6-verificatie)
+
+## Doel
+
+nederlandse versie cheat-cheet CISCO Gebaseerd op Cisco Networking Academy CCNA versie 6 en versie 7 cursusmateriaal, en aanbevolen voor CCNA examenvoorbereiding.
+
+---
+
 3 basis configuratie modes waar we al reeds mee bekend zijn ( je zal ze nog veel tegenkomen )
 
 ## Configuration Modes
@@ -101,31 +146,31 @@ elk met hun eigen specifiek doel.
 
 Types:
 
-* Standard Static Route
+- Standard Static Route
 
 ```bash
 R1(config)#ip route [network-address] [subnet-mask] ([next-hop-ip] [exit-int])
 ```
 
-* Default Static Route (0.0.0.0/0)
+- Default Static Route (0.0.0.0/0)
 
 ```bash
 R1(config)#ip route 0.0.0.0 0.0.0.0 ([next-hop-ip] [exit-int])
 ```
 
-* Floating Static Route (AD > 1)
+- Floating Static Route (AD > 1)
 
 ```bash
 R1(config)#ip route [network-address] [subnet-mask] ([next-hop-ip] [exit-int])[AD]
 ```
 
-* Summary Static Route
+- Summary Static Route
 
 ```bash
 R1(config)#ip route [network-address] [subnet-mask*] ([next-hop-ip] [exit-int])
 ```
 
-* Met het juiste subnetmasker waarmee de anders afzonderlijke routes worden samengevat tot één enkele statische route.
+- Met het juiste subnetmasker waarmee de anders afzonderlijke routes worden samengevat tot één enkele statische route.
 
 ## Dynamisch routing: OSPF (Open Shortest Path First)
 
@@ -197,19 +242,19 @@ In de globale configuratiemodus, dus bij de R1(config)# prompt:
 
 💡 ProTip: Standaard of uitgebreid?  
 
-* **Standaard ACL's** worden meestal (zo niet altijd) zo dicht mogelijk bij de **bestemming** geplaatst.  
-* **Uitgebreide ACL's** worden zo dicht mogelijk bij de **bron** geplaatst.  
+- **Standaard ACL's** worden meestal (zo niet altijd) zo dicht mogelijk bij de **bestemming** geplaatst.  
+- **Uitgebreide ACL's** worden zo dicht mogelijk bij de **bron** geplaatst.  
 
 Moeite om dit te onthouden? Denk aan:  
 
-* **Standaard = bestemming**
-* **Uitgebreid = bron**
+- **Standaard = bestemming**
+- **Uitgebreid = bron**
 
 💡 herinner:
 
 **Hoeveel ACL's kan ik op de router hebben?**  
 
-* Je kunt één ACL per interface, per protocol (IPv4, IPv6), per richting (inkomend , uitgaand)
+- Je kunt één ACL per interface, per protocol (IPv4, IPv6), per richting (inkomend , uitgaand)
 
 ### Procedure om standaard genummerd ACLs te configureren
 
@@ -313,29 +358,29 @@ Hierdoor krijg je een duplicate address error als je HSRPv1 en HSRPv2 met hetzel
 
 💡 **HSRPv1 vs HSRPv2: Wat is het verschil?**
 
-* **Aantal groepen:**
-  * HSRPv1 ondersteunt maximaal 256 groepen (0-255) per interface.  
-  * HSRPv2 ondersteunt tot 4096 groepen (0-4095) per interface.
+- **Aantal groepen:**
+  - HSRPv1 ondersteunt maximaal 256 groepen (0-255) per interface.  
+  - HSRPv2 ondersteunt tot 4096 groepen (0-4095) per interface.
 
-* **IPv6-ondersteuning:**
-  * HSRPv1 ondersteunt alleen IPv4.  
-  * HSRPv2 ondersteunt zowel IPv4 als IPv6.
+- **IPv6-ondersteuning:**
+  - HSRPv1 ondersteunt alleen IPv4.  
+  - HSRPv2 ondersteunt zowel IPv4 als IPv6.
 
-* **Multicast-adres:**  
-  * HSRPv1 gebruikt 224.0.0.2.  
-  * HSRPv2 gebruikt 224.0.0.102 (minder kans op conflicten).
+- **Multicast-adres:**  
+  - HSRPv1 gebruikt 224.0.0.2.  
+  - HSRPv2 gebruikt 224.0.0.102 (minder kans op conflicten).
 
-* **Virtueel MAC-adres:**
-  * HSRPv1: 0000.0C07.ACxx  
-  * HSRPv2: 0000.0C9F.Fxxx
+- **Virtueel MAC-adres:**
+  - HSRPv1: 0000.0C07.ACxx  
+  - HSRPv2: 0000.0C9F.Fxxx
 
 ❗(xx/xxx = groepnummer in hex)
 
-* **Detectie van duplicate adressen:**  
-  * HSRPv2 kan duplicate virtuele IP-adressen detecteren en waarschuwen.
+- **Detectie van duplicate adressen:**  
+  - HSRPv2 kan duplicate virtuele IP-adressen detecteren en waarschuwen.
 
-* **Andere verbeteringen:**  
-  * HSRPv2 biedt betere schaalbaarheid, beveiliging en foutdetectie.
+- **Andere verbeteringen:**  
+  - HSRPv2 biedt betere schaalbaarheid, beveiliging en foutdetectie.
 
 Gebruik HSRPv2 als je nieuwe netwerken ontwerpt of IPv6 wilt ondersteunen!
 
@@ -364,8 +409,8 @@ Er zijn vijf klassen waarin IPv4-adressen zijn onderverdeeld: A, B, C, D en E.
 
 💡 Klassen D en E zijn gereserveerde groepen.  
 
-* **Klasse D-adressen** zijn bedoeld voor multicastgroepen.
-* **Klasse E-adressen** zijn gereserveerd voor onderzoeksdoeleinden.
+- **Klasse D-adressen** zijn bedoeld voor multicastgroepen.
+- **Klasse E-adressen** zijn gereserveerd voor onderzoeksdoeleinden.
 
 | Class | First Octet | Range                       |
 | ----- | ----------- | --------------------------- |
@@ -508,8 +553,8 @@ standaard voert EIGRP GEEN automatische netwerksamenvatting (autosummarization) 
   
 Een overzicht van veelvoorkomende AD-waarden vind je [hier](#veelvoorkomende-administrative-distance-ad-waarden).
 
-* De AD voor een EIGRP summary route is 5.  
-* De AD voor een EIGRP externe route is 170.
+- De AD voor een EIGRP summary route is 5.  
+- De AD voor een EIGRP externe route is 170.
 
 ### EIGRP Fine Tuning
 
@@ -560,9 +605,9 @@ Vervang simpelweg `ip` door `ipv6` in je commando's.
 
 Voorbeeld:
 
-* `show ip route` → `show ipv6 route`
-* `show ip protocols` → `show ipv6 protocols`
-* `show ip eigrp neighbors` → `show ipv6 eigrp neighbors`
+- `show ip route` → `show ipv6 route`
+- `show ip protocols` → `show ipv6 protocols`
+- `show ip eigrp neighbors` → `show ipv6 eigrp neighbors`
 
 |Commando |Beschrijving |
 |---------|-------------|
