@@ -95,3 +95,7 @@ copy run start
 
 :bulb:Als er niet-Cisco-apparaten op je netwerk zijn, wil je misschien ook LLDP (Link-Layer Discovery Protocol) inschakelen, gebruik:  
 ````CDevice(config)#lldp run````
+
+---
+
+*Gebaseerd op Cisco CCNA Routing & Switching Essentials materiaal & vertaald van r7perezyera
